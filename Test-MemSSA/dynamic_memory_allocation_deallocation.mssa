@@ -1,0 +1,452 @@
+
+*********General Stats***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+AddrsNum            29
+BBWith2Succ         3
+BBWith3Succ         0
+CallsNum            2
+ConstArrayObj       1
+ConstStructObj      0
+ConstantObj         0
+CopysNum            4
+FIObjNum            1
+FSObjNum            16
+FunctionObjs        6
+GepsNum             7
+GlobalObjs          1
+HeapObjs            1
+IndCallSites        0
+LoadsNum            19
+MaxStructSize       5
+NonPtrObj           15
+ReturnsNum          0
+StackObjs           8
+StoresNum           19
+TotalCallSite       6
+TotalFieldObjects   5
+TotalObjects        18
+TotalPTASVFStmts    44
+TotalPointers       104
+TotalSVFStmts       100
+VarArrayObj         0
+VarStructObj        1
+----------------Time and memory stats--------------------
+LLVMIRTime          0.005
+SVFIRTime           0
+SymbolTableTime     0
+#######################################################
+
+*********CallGraph Stats (Andersen analysis)***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           6
+TotalNode           6
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+----------------Time and memory stats--------------------
+AvgIn/OutAddrEdge   0.372881
+AvgIn/OutCopyEdge   0.372881
+AvgIn/OutEdge       0.949153
+AvgIn/OutLoadEdge   0.0847458
+AvgIn/OutStoreEdge  0.118644
+AvgPtsSetSize       0.285714
+AvgTopLvlPtsSize    0.945946
+CollapseTime        0
+CopyGepTime         0
+LoadStoreTime       0
+MemoryUsageVmrss    256
+MemoryUsageVmsize   0
+SCCDetectTime       0
+SCCMergeTime        0
+TotalTime           0
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AddrProcessed       22
+CopyProcessed       12
+DummyFieldPtrs      1
+FieldObjs           5
+GepProcessed        7
+IndCallSites        0
+IndEdgeSolved       0
+LoadProcessed       5
+LocalVarInRecur     0
+MaxInAddrEdge       1
+MaxInCopyEdge       2
+MaxInLoadEdge       1
+MaxInStoreEdge      2
+MaxNodesInSCC       0
+MaxOutAddrEdge      6
+MaxOutCopyEdge      5
+MaxOutLoadEdge      4
+MaxOutStoreEdge     1
+MaxPtsSetSize       1
+MemObjects          18
+NodesInCycles       0
+NullPointer         0
+NumOfAddrs          22
+NumOfCGEdge         34
+NumOfCGNode         65
+NumOfCopys          15
+NumOfFieldExpand    0
+NumOfGeps           7
+NumOfLoads          5
+NumOfSCCDetect      2
+NumOfSFRs           0
+NumOfStores         7
+NumOfValidNode      59
+NumOfValidObjNode   21
+Pointers            103
+PointsToBlkPtr      0
+PointsToConstPtr    0
+SolveIterations     2
+StoreProcessed      7
+TotalCycleNum       0
+TotalObjects        23
+TotalPWCCycleNum    0
+TotalPointers       104
+#######################################################
+
+****Persistent Points-To Cache Statistics: Andersen's analysis bitvector****
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+UniquePointsToSets       23
+TotalUnions              41
+PropertyUnions           41
+UniqueUnions             0
+LookupUnions             0
+PreemptiveUnions         0
+TotalComplements         125
+PropertyComplements      125
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       12
+PropertyIntersections    12
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################
+
+*********Memory SSA Statistics***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+----------------Time and memory stats--------------------
+AverageRegSize      1
+GenMUCHITime        0
+GenRegionTime       0
+InsertPHITime       0
+SSARenameTime       0
+TotalMSSATime       0
+----------------Numbers stats----------------------------
+BBHasMSSAPhi        0
+CSChiNode           1
+CSHasChi            1
+CSHasMu             1
+CSMuNode            1
+FunEntryChi         3
+FunHasEntryChi      2
+FunHasRetMu         2
+FunRetMu            3
+LoadHasMu           5
+LoadMuNode          5
+MSSAPhi             0
+MaxRegSize          1
+MemRegions          3
+StoreChiNode        2
+StoreHasChi         2
+#######################################################
+==========FUNCTION: malloc==========
+entry
+   %size.addr = alloca i64, align 8 
+   store i64 %size, ptr %size.addr, align 8 
+   ret ptr null 
+==========FUNCTION: fillArray==========
+6V_1 = ENCHI(MR_6V_0) 	pts{30 }
+
+   %3 = alloca ptr, align 8 
+   %4 = alloca i32, align 4 
+   %5 = alloca i32, align 4 
+   store ptr %0, ptr %3, align 8 
+6V_2 = STCHI(MR_6V_1) 	pts{30 }
+
+   store i32 %1, ptr %4, align 4 
+   store i32 0, ptr %5, align 4 
+   br label %6 
+
+   %7 = load i32, ptr %5, align 4 
+   %8 = load i32, ptr %4, align 4 
+   %9 = icmp slt i32 %7, %8 
+   br i1 %9, label %10, label %21 
+
+   %11 = load i32, ptr %5, align 4 
+   %12 = load i32, ptr %5, align 4 
+   %13 = mul nsw i32 %11, %12 
+
+LDMU(MR_6V_2) 	pts{30 }
+   %14 = load ptr, ptr %3, align 8 
+   %15 = load i32, ptr %5, align 4 
+   %16 = sext i32 %15 to i64 
+   %17 = getelementptr inbounds i32, ptr %14, i64 %16 
+   store i32 %13, ptr %17, align 4 
+   br label %18 
+
+   %19 = load i32, ptr %5, align 4 
+   %20 = add nsw i32 %19, 1 
+   store i32 %20, ptr %5, align 4 
+   br label %6, !llvm.loop !6 
+
+   ret void 
+RETMU(MR_6V_2) 	pts{30 }
+==========FUNCTION: main==========
+4V_1 = ENCHI(MR_4V_0) 	pts{79 }
+2V_1 = ENCHI(MR_2V_0) 	pts{68 }
+
+   %1 = alloca i32, align 4 
+   %2 = alloca i32, align 4 
+   %3 = alloca ptr, align 8 
+   %4 = alloca i32, align 4 
+   store i32 0, ptr %1, align 4 
+   store i32 10, ptr %2, align 4 
+   %5 = load i32, ptr %2, align 4 
+   %6 = sext i32 %5 to i64 
+   %7 = mul i64 %6, 4 
+
+CALMU(MR_4V_1) 	pts{79 }
+   %8 = call noalias ptr @malloc(i64 noundef %7) #4 
+4V_2 = CALCHI(MR_4V_1) 	pts{79 }
+
+   store ptr %8, ptr %3, align 8 
+2V_2 = STCHI(MR_2V_1) 	pts{68 }
+
+LDMU(MR_2V_2) 	pts{68 }
+   %9 = load ptr, ptr %3, align 8 
+   %10 = icmp eq ptr %9, null 
+   br i1 %10, label %11, label %13 
+
+   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str) 
+   store i32 1, ptr %1, align 4 
+   br label %33 
+
+
+LDMU(MR_2V_2) 	pts{68 }
+   %14 = load ptr, ptr %3, align 8 
+   %15 = load i32, ptr %2, align 4 
+   call void @fillArray(ptr noundef %14, i32 noundef %15) 
+   store i32 0, ptr %4, align 4 
+   br label %16 
+
+   %17 = load i32, ptr %4, align 4 
+   %18 = load i32, ptr %2, align 4 
+   %19 = icmp slt i32 %17, %18 
+   br i1 %19, label %20, label %30 
+
+
+LDMU(MR_2V_2) 	pts{68 }
+   %21 = load ptr, ptr %3, align 8 
+   %22 = load i32, ptr %4, align 4 
+   %23 = sext i32 %22 to i64 
+   %24 = getelementptr inbounds i32, ptr %21, i64 %23 
+   %25 = load i32, ptr %24, align 4 
+   %26 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, i32 noundef %25) 
+   br label %27 
+
+   %28 = load i32, ptr %4, align 4 
+   %29 = add nsw i32 %28, 1 
+   store i32 %29, ptr %4, align 4 
+   br label %16, !llvm.loop !6 
+
+   %31 = call i32 (ptr, ...) @printf(ptr noundef @.str.2) 
+
+LDMU(MR_2V_2) 	pts{68 }
+   %32 = load ptr, ptr %3, align 8 
+   call void @free(ptr noundef %32) #5 
+   store i32 0, ptr %1, align 4 
+   br label %33 
+
+   %34 = load i32, ptr %1, align 4 
+   ret i32 %34 
+RETMU(MR_4V_2) 	pts{79 }
+RETMU(MR_2V_2) 	pts{68 }
+==========FUNCTION: malloc==========
+==========FUNCTION: printf==========
+==========FUNCTION: free==========
+
+*********SVFG Statistics***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+----------------Time and memory stats--------------------
+ATNodeTime          0.001
+AvgWeight           1
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0
+OptTime             0
+TLNodeTime          0
+TotalTime           0.001
+----------------Numbers stats----------------------------
+ActualIn            1
+ActualOut           1
+ActualParam         5
+ActualRet           0
+Addr                22
+AvgInDegree         0
+AvgIndInDeg         1
+AvgIndOutDeg        1
+AvgOutDegree        0
+Copy                1
+DirectCallEdge      1
+DirectEdge          35
+DirectRetEdge       0
+FormalIn            3
+FormalOut           3
+FormalParam         1
+FormalRet           1
+Gep                 7
+IndCallEdge         0
+IndRetEdge          0
+IndirectEdge        11
+IndirectEdgeLabels  11
+Load                5
+MSSAPhi             0
+MaxInDegree         3
+MaxIndInDeg         1
+MaxIndOutDeg        5
+MaxOutDegree        5
+PHI                 1
+Store               7
+TotalEdge           46
+TotalNode           59
+#######################################################
+
+*********CallGraph Stats (Flow-sensitive analysis)***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+FIObjNum            1
+FSObjNum            17
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           6
+TotalNode           6
+#######################################################
+
+*********Flow-Sensitive Pointer Analysis Statistics***************
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+----------------Time and memory stats--------------------
+AddrTime            0
+AverageSCCSize      0
+AvgAddrTakenVarPts  0.857143
+AvgINPtsSize        0
+AvgOUTPtsSize       0
+AvgPtsSize          0.945946
+AvgTopLvlPtsSize    0.945946
+CopyTime            0
+DirectPropaTime     0
+GepTime             0
+IndirectPropaTime   0
+LoadTime            0
+MemoryUsageVmrss    896
+MemoryUsageVmsize   132
+PhiTime             0
+ProcessTime         0
+PropagationTime     0
+SCCTime             0
+SolveTime           0
+StoreTime           0
+Strong/WeakUpdTime  0
+TotalTime           0.001
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     0
+AO_SNodesHaveOUT    0
+CopysNum            1
+DummyFieldPtrs      1
+FI_SNodesHaveIN     0
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+FieldObjs           5
+IndEdgeSolved       0
+LD_SNodesHaveIN     0
+LD_SNodesHaveOUT    0
+LocalVarInRecur     0
+MaxAddrTakenVarPts  1
+MaxINPtsSize        0
+MaxOUTPtsSize       0
+MaxPtsSize          1
+MaxSCCSize          1
+MaxTopLvlPtsSize    1
+MemObjects          18
+NullPointer         0
+NumOfAddrTakenVar   7
+NumOfNodesInSCC     0
+NumOfSCC            0
+PHI_SNodesHaveIN    0
+PHI_SNodesHaveOUT   0
+Pointers            103
+PointsToBlkPtr      0
+PointsToConstPtr    0
+PotentialVarHaveIN  0
+PotentialVarHaveOUT 0
+ProcessedAParam     0
+ProcessedAddr       22
+ProcessedCopy       1
+ProcessedFRet       0
+ProcessedGep        7
+ProcessedLoad       5
+ProcessedMSSANode   8
+ProcessedPhi        1
+ProcessedStore      7
+SNodesHaveIN        0
+SNodesHaveOUT       0
+ST_SNodesHaveIN     0
+ST_SNodesHaveOUT    0
+SolveIterations     1
+StoresNum           7
+StrongUpdates       2
+TotalObjects        23
+TotalPointers       104
+VarHaveEmptyIN      0
+VarHaveEmptyOUT     0
+VarHaveIN           0
+VarHaveIN_AI        0
+VarHaveIN_AO        0
+VarHaveIN_FI        0
+VarHaveIN_FO        0
+VarHaveIN_LD        0
+VarHaveIN_PHI       0
+VarHaveIN_ST        0
+VarHaveOUT          0
+VarHaveOUT_AI       0
+VarHaveOUT_AO       0
+VarHaveOUT_FI       0
+VarHaveOUT_FO       0
+VarHaveOUT_LD       0
+VarHaveOUT_PHI      0
+VarHaveOUT_ST       0
+#######################################################
+
+****Persistent Points-To Cache Statistics: flow-sensitive analysis bitvector****
+################ (program : dynamic_memory_allocation_deallocation.ll)###############
+UniquePointsToSets       23
+TotalUnions              50
+PropertyUnions           50
+UniqueUnions             0
+LookupUnions             0
+PreemptiveUnions         0
+TotalComplements         0
+PropertyComplements      0
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       0
+PropertyIntersections    0
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################

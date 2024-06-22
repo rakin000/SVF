@@ -1,0 +1,133 @@
+
+*********General Stats***************
+################ (program : dummy.ll)###############
+AddrsNum            12
+BBWith2Succ         0
+BBWith3Succ         0
+CallsNum            0
+ConstArrayObj       0
+ConstStructObj      0
+ConstantObj         0
+CopysNum            1
+FIObjNum            0
+FSObjNum            6
+FunctionObjs        2
+GepsNum             0
+GlobalObjs          0
+HeapObjs            0
+IndCallSites        0
+LoadsNum            5
+MaxStructSize       0
+NonPtrObj           5
+ReturnsNum          0
+StackObjs           3
+StoresNum           4
+TotalCallSite       3
+TotalFieldObjects   0
+TotalObjects        7
+TotalPTASVFStmts    13
+TotalPointers       26
+TotalSVFStmts       23
+VarArrayObj         0
+VarStructObj        0
+----------------Time and memory stats--------------------
+LLVMIRTime          0.007
+SVFIRTime           0
+SymbolTableTime     0
+#######################################################
+
+*********CallGraph Stats (Andersen analysis)***************
+################ (program : dummy.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           3
+TotalNode           2
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : dummy.ll)###############
+----------------Time and memory stats--------------------
+AvgIn/OutAddrEdge   0.421053
+AvgIn/OutCopyEdge   0.263158
+AvgIn/OutEdge       0.894737
+AvgIn/OutLoadEdge   0.157895
+AvgIn/OutStoreEdge  0.0526316
+AvgPtsSetSize       0.315789
+AvgTopLvlPtsSize    0.916667
+CollapseTime        0
+CopyGepTime         0
+LoadStoreTime       0
+MemoryUsageVmrss    384
+MemoryUsageVmsize   0
+SCCDetectTime       0
+SCCMergeTime        0
+TotalTime           0
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AddrProcessed       8
+CopyProcessed       4
+DummyFieldPtrs      0
+FieldObjs           0
+GepProcessed        0
+IndCallSites        0
+IndEdgeSolved       0
+LoadProcessed       3
+LocalVarInRecur     0
+MaxInAddrEdge       1
+MaxInCopyEdge       1
+MaxInLoadEdge       1
+MaxInStoreEdge      1
+MaxNodesInSCC       0
+MaxOutAddrEdge      3
+MaxOutCopyEdge      3
+MaxOutLoadEdge      3
+MaxOutStoreEdge     1
+MaxPtsSetSize       1
+MemObjects          7
+NodesInCycles       0
+NullPointer         0
+NumOfAddrs          8
+NumOfCGEdge         9
+NumOfCGNode         22
+NumOfCopys          5
+NumOfFieldExpand    0
+NumOfGeps           0
+NumOfLoads          3
+NumOfSCCDetect      2
+NumOfSFRs           0
+NumOfStores         1
+NumOfValidNode      19
+NumOfValidObjNode   6
+Pointers            26
+PointsToBlkPtr      0
+PointsToConstPtr    0
+SolveIterations     2
+StoreProcessed      1
+TotalCycleNum       0
+TotalObjects        7
+TotalPWCCycleNum    0
+TotalPointers       26
+#######################################################
+
+****Persistent Points-To Cache Statistics: Andersen's analysis bitvector****
+################ (program : dummy.ll)###############
+UniquePointsToSets       7
+TotalUnions              12
+PropertyUnions           12
+UniqueUnions             0
+LookupUnions             0
+PreemptiveUnions         0
+TotalComplements         44
+PropertyComplements      44
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       4
+PropertyIntersections    4
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################

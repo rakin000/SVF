@@ -1,0 +1,590 @@
+
+*********General Stats***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+AddrsNum            35
+BBWith2Succ         4
+BBWith3Succ         0
+CallsNum            3
+ConstArrayObj       1
+ConstStructObj      0
+ConstantObj         0
+CopysNum            8
+FIObjNum            2
+FSObjNum            21
+FunctionObjs        7
+GepsNum             24
+GlobalObjs          1
+HeapObjs            2
+IndCallSites        0
+LoadsNum            43
+MaxStructSize       5
+NonPtrObj           20
+ReturnsNum          0
+StackObjs           12
+StoresNum           27
+TotalCallSite       10
+TotalFieldObjects   7
+TotalObjects        24
+TotalPTASVFStmts    82
+TotalPointers       181
+TotalSVFStmts       170
+VarArrayObj         0
+VarStructObj        2
+----------------Time and memory stats--------------------
+LLVMIRTime          0.006
+SVFIRTime           0.001
+SymbolTableTime     0
+#######################################################
+
+*********CallGraph Stats (Andersen analysis)***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           10
+TotalNode           7
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Time and memory stats--------------------
+AvgIn/OutAddrEdge   0.267327
+AvgIn/OutCopyEdge   0.544554
+AvgIn/OutEdge       1.07921
+AvgIn/OutLoadEdge   0.168317
+AvgIn/OutStoreEdge  0.0990099
+AvgPtsSetSize       0.389381
+AvgTopLvlPtsSize    1.11111
+CollapseTime        0
+CopyGepTime         0
+LoadStoreTime       0
+MemoryUsageVmrss    384
+MemoryUsageVmsize   264
+SCCDetectTime       0
+SCCMergeTime        0
+TotalTime           0
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AddrProcessed       27
+CopyProcessed       28
+DummyFieldPtrs      1
+FieldObjs           7
+GepProcessed        24
+IndCallSites        0
+IndEdgeSolved       0
+LoadProcessed       17
+LocalVarInRecur     0
+MaxInAddrEdge       1
+MaxInCopyEdge       2
+MaxInLoadEdge       1
+MaxInStoreEdge      2
+MaxNodesInSCC       0
+MaxOutAddrEdge      5
+MaxOutCopyEdge      7
+MaxOutLoadEdge      6
+MaxOutStoreEdge     1
+MaxPtsSetSize       2
+MemObjects          24
+NodesInCycles       0
+NullPointer         0
+NumOfAddrs          27
+NumOfCGEdge         82
+NumOfCGNode         108
+NumOfCopys          31
+NumOfFieldExpand    0
+NumOfGeps           24
+NumOfLoads          17
+NumOfSCCDetect      3
+NumOfSFRs           0
+NumOfStores         10
+NumOfValidNode      101
+NumOfValidObjNode   28
+Pointers            180
+PointsToBlkPtr      0
+PointsToConstPtr    0
+SolveIterations     3
+StoreProcessed      10
+TotalCycleNum       0
+TotalObjects        31
+TotalPWCCycleNum    0
+TotalPointers       181
+#######################################################
+
+****Persistent Points-To Cache Statistics: Andersen's analysis bitvector****
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+UniquePointsToSets       32
+TotalUnions              81
+PropertyUnions           78
+UniqueUnions             1
+LookupUnions             0
+PreemptiveUnions         2
+TotalComplements         317
+PropertyComplements      317
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       27
+PropertyIntersections    27
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################
+
+*********Memory SSA Statistics***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Time and memory stats--------------------
+AverageRegSize      1
+GenMUCHITime        0
+GenRegionTime       0.001
+InsertPHITime       0
+SSARenameTime       0
+TotalMSSATime       0.001
+----------------Numbers stats----------------------------
+BBHasMSSAPhi        0
+CSChiNode           6
+CSHasChi            4
+CSHasMu             4
+CSMuNode            6
+FunEntryChi         10
+FunHasEntryChi      3
+FunHasRetMu         3
+FunRetMu            10
+LoadHasMu           17
+LoadMuNode          17
+MSSAPhi             0
+MaxRegSize          1
+MemRegions          6
+StoreChiNode        5
+StoreHasChi         5
+#######################################################
+==========FUNCTION: malloc==========
+entry
+   %size.addr = alloca i64, align 8 
+   store i64 %size, ptr %size.addr, align 8 
+   ret ptr null 
+==========FUNCTION: initializeArray==========
+6V_1 = ENCHI(MR_6V_0) 	pts{220 }
+2V_1 = ENCHI(MR_2V_0) 	pts{41 }
+14V_1 = ENCHI(MR_14V_0) 	pts{29 }
+
+   %3 = alloca ptr, align 8 
+   %4 = alloca i32, align 4 
+   %5 = alloca i32, align 4 
+   store ptr %0, ptr %3, align 8 
+14V_2 = STCHI(MR_14V_1) 	pts{29 }
+
+   store i32 %1, ptr %4, align 4 
+   %6 = load i32, ptr %4, align 4 
+   %7 = sext i32 %6 to i64 
+   %8 = mul i64 %7, 4 
+
+CALMU(MR_2V_1) 	pts{41 }
+   %9 = call noalias ptr @malloc(i64 noundef %8) #4 
+2V_2 = CALCHI(MR_2V_1) 	pts{41 }
+
+LDMU(MR_14V_2) 	pts{29 }
+   %10 = load ptr, ptr %3, align 8 
+   %11 = getelementptr inbounds %struct.DynamicArray, ptr %10, i32 0, i32 0 
+   store ptr %9, ptr %11, align 8 
+6V_2 = STCHI(MR_6V_1) 	pts{220 }
+
+   %12 = load i32, ptr %4, align 4 
+
+LDMU(MR_14V_2) 	pts{29 }
+   %13 = load ptr, ptr %3, align 8 
+   %14 = getelementptr inbounds %struct.DynamicArray, ptr %13, i32 0, i32 1 
+   store i32 %12, ptr %14, align 8 
+   store i32 0, ptr %5, align 4 
+   br label %15 
+
+   %16 = load i32, ptr %5, align 4 
+   %17 = load i32, ptr %4, align 4 
+   %18 = icmp slt i32 %16, %17 
+   br i1 %18, label %19, label %31 
+
+   %20 = load i32, ptr %5, align 4 
+   %21 = add nsw i32 %20, 1 
+
+LDMU(MR_14V_2) 	pts{29 }
+   %22 = load ptr, ptr %3, align 8 
+   %23 = getelementptr inbounds %struct.DynamicArray, ptr %22, i32 0, i32 0 
+
+LDMU(MR_6V_2) 	pts{220 }
+   %24 = load ptr, ptr %23, align 8 
+   %25 = load i32, ptr %5, align 4 
+   %26 = sext i32 %25 to i64 
+   %27 = getelementptr inbounds i32, ptr %24, i64 %26 
+   store i32 %21, ptr %27, align 4 
+   br label %28 
+
+   %29 = load i32, ptr %5, align 4 
+   %30 = add nsw i32 %29, 1 
+   store i32 %30, ptr %5, align 4 
+   br label %15, !llvm.loop !6 
+
+   ret void 
+RETMU(MR_6V_2) 	pts{220 }
+RETMU(MR_2V_2) 	pts{41 }
+RETMU(MR_14V_2) 	pts{29 }
+==========FUNCTION: doubleArraySize==========
+4V_1 = ENCHI(MR_4V_0) 	pts{100 }
+10V_1 = ENCHI(MR_10V_0) 	pts{86 }
+6V_1 = ENCHI(MR_6V_0) 	pts{220 }
+8V_1 = ENCHI(MR_8V_0) 	pts{82 }
+
+   %2 = alloca ptr, align 8 
+   %3 = alloca i32, align 4 
+   %4 = alloca ptr, align 8 
+   %5 = alloca i32, align 4 
+   store ptr %0, ptr %2, align 8 
+8V_2 = STCHI(MR_8V_1) 	pts{82 }
+
+LDMU(MR_8V_2) 	pts{82 }
+   %6 = load ptr, ptr %2, align 8 
+   %7 = getelementptr inbounds %struct.DynamicArray, ptr %6, i32 0, i32 1 
+   %8 = load i32, ptr %7, align 8 
+   %9 = mul nsw i32 %8, 2 
+   store i32 %9, ptr %3, align 4 
+   %10 = load i32, ptr %3, align 4 
+   %11 = sext i32 %10 to i64 
+   %12 = mul i64 %11, 4 
+
+CALMU(MR_4V_1) 	pts{100 }
+   %13 = call noalias ptr @malloc(i64 noundef %12) #4 
+4V_2 = CALCHI(MR_4V_1) 	pts{100 }
+
+   store ptr %13, ptr %4, align 8 
+10V_2 = STCHI(MR_10V_1) 	pts{86 }
+
+   store i32 0, ptr %5, align 4 
+   br label %14 
+
+   %15 = load i32, ptr %5, align 4 
+
+LDMU(MR_8V_2) 	pts{82 }
+   %16 = load ptr, ptr %2, align 8 
+   %17 = getelementptr inbounds %struct.DynamicArray, ptr %16, i32 0, i32 1 
+   %18 = load i32, ptr %17, align 8 
+   %19 = icmp slt i32 %15, %18 
+   br i1 %19, label %20, label %35 
+
+
+LDMU(MR_8V_2) 	pts{82 }
+   %21 = load ptr, ptr %2, align 8 
+   %22 = getelementptr inbounds %struct.DynamicArray, ptr %21, i32 0, i32 0 
+
+LDMU(MR_6V_1) 	pts{220 }
+   %23 = load ptr, ptr %22, align 8 
+   %24 = load i32, ptr %5, align 4 
+   %25 = sext i32 %24 to i64 
+   %26 = getelementptr inbounds i32, ptr %23, i64 %25 
+   %27 = load i32, ptr %26, align 4 
+
+LDMU(MR_10V_2) 	pts{86 }
+   %28 = load ptr, ptr %4, align 8 
+   %29 = load i32, ptr %5, align 4 
+   %30 = sext i32 %29 to i64 
+   %31 = getelementptr inbounds i32, ptr %28, i64 %30 
+   store i32 %27, ptr %31, align 4 
+   br label %32 
+
+   %33 = load i32, ptr %5, align 4 
+   %34 = add nsw i32 %33, 1 
+   store i32 %34, ptr %5, align 4 
+   br label %14, !llvm.loop !6 
+
+
+LDMU(MR_8V_2) 	pts{82 }
+   %36 = load ptr, ptr %2, align 8 
+   %37 = getelementptr inbounds %struct.DynamicArray, ptr %36, i32 0, i32 0 
+
+LDMU(MR_6V_1) 	pts{220 }
+   %38 = load ptr, ptr %37, align 8 
+   call void @free(ptr noundef %38) #5 
+
+LDMU(MR_10V_2) 	pts{86 }
+   %39 = load ptr, ptr %4, align 8 
+
+LDMU(MR_8V_2) 	pts{82 }
+   %40 = load ptr, ptr %2, align 8 
+   %41 = getelementptr inbounds %struct.DynamicArray, ptr %40, i32 0, i32 0 
+   store ptr %39, ptr %41, align 8 
+6V_2 = STCHI(MR_6V_1) 	pts{220 }
+
+   %42 = load i32, ptr %3, align 4 
+
+LDMU(MR_8V_2) 	pts{82 }
+   %43 = load ptr, ptr %2, align 8 
+   %44 = getelementptr inbounds %struct.DynamicArray, ptr %43, i32 0, i32 1 
+   store i32 %42, ptr %44, align 8 
+   ret void 
+RETMU(MR_6V_2) 	pts{220 }
+RETMU(MR_4V_2) 	pts{100 }
+RETMU(MR_10V_2) 	pts{86 }
+RETMU(MR_8V_2) 	pts{82 }
+==========FUNCTION: main==========
+6V_1 = ENCHI(MR_6V_0) 	pts{220 }
+4V_1 = ENCHI(MR_4V_0) 	pts{100 }
+2V_1 = ENCHI(MR_2V_0) 	pts{41 }
+
+   %1 = alloca i32, align 4 
+   %2 = alloca %struct.DynamicArray, align 8 
+   %3 = alloca i32, align 4 
+   %4 = alloca i32, align 4 
+   store i32 0, ptr %1, align 4 
+
+CALMU(MR_6V_1) 	pts{220 }
+CALMU(MR_2V_1) 	pts{41 }
+   call void @initializeArray(ptr noundef %2, i32 noundef 5) 
+6V_2 = CALCHI(MR_6V_1) 	pts{220 }
+2V_2 = CALCHI(MR_2V_1) 	pts{41 }
+
+   store i32 0, ptr %3, align 4 
+   br label %5 
+
+   %6 = load i32, ptr %3, align 4 
+   %7 = getelementptr inbounds %struct.DynamicArray, ptr %2, i32 0, i32 1 
+   %8 = load i32, ptr %7, align 8 
+   %9 = icmp slt i32 %6, %8 
+   br i1 %9, label %10, label %21 
+
+   %11 = getelementptr inbounds %struct.DynamicArray, ptr %2, i32 0, i32 0 
+
+LDMU(MR_6V_2) 	pts{220 }
+   %12 = load ptr, ptr %11, align 8 
+   %13 = load i32, ptr %3, align 4 
+   %14 = sext i32 %13 to i64 
+   %15 = getelementptr inbounds i32, ptr %12, i64 %14 
+   %16 = load i32, ptr %15, align 4 
+   %17 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %16) 
+   br label %18 
+
+   %19 = load i32, ptr %3, align 4 
+   %20 = add nsw i32 %19, 1 
+   store i32 %20, ptr %3, align 4 
+   br label %5, !llvm.loop !6 
+
+   %22 = call i32 (ptr, ...) @printf(ptr noundef @.str.1) 
+
+CALMU(MR_6V_2) 	pts{220 }
+CALMU(MR_4V_1) 	pts{100 }
+   call void @doubleArraySize(ptr noundef %2) 
+6V_3 = CALCHI(MR_6V_2) 	pts{220 }
+4V_2 = CALCHI(MR_4V_1) 	pts{100 }
+
+   store i32 0, ptr %4, align 4 
+   br label %23 
+
+   %24 = load i32, ptr %4, align 4 
+   %25 = getelementptr inbounds %struct.DynamicArray, ptr %2, i32 0, i32 1 
+   %26 = load i32, ptr %25, align 8 
+   %27 = icmp slt i32 %24, %26 
+   br i1 %27, label %28, label %39 
+
+   %29 = getelementptr inbounds %struct.DynamicArray, ptr %2, i32 0, i32 0 
+
+LDMU(MR_6V_3) 	pts{220 }
+   %30 = load ptr, ptr %29, align 8 
+   %31 = load i32, ptr %4, align 4 
+   %32 = sext i32 %31 to i64 
+   %33 = getelementptr inbounds i32, ptr %30, i64 %32 
+   %34 = load i32, ptr %33, align 4 
+   %35 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %34) 
+   br label %36 
+
+   %37 = load i32, ptr %4, align 4 
+   %38 = add nsw i32 %37, 1 
+   store i32 %38, ptr %4, align 4 
+   br label %23, !llvm.loop !8 
+
+   %40 = call i32 (ptr, ...) @printf(ptr noundef @.str.1) 
+   %41 = getelementptr inbounds %struct.DynamicArray, ptr %2, i32 0, i32 0 
+
+LDMU(MR_6V_3) 	pts{220 }
+   %42 = load ptr, ptr %41, align 8 
+   call void @free(ptr noundef %42) #4 
+   ret i32 0 
+RETMU(MR_6V_3) 	pts{220 }
+RETMU(MR_4V_2) 	pts{100 }
+RETMU(MR_2V_2) 	pts{41 }
+==========FUNCTION: malloc==========
+==========FUNCTION: free==========
+==========FUNCTION: printf==========
+
+*********SVFG Statistics***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Time and memory stats--------------------
+ATNodeTime          0
+AvgWeight           1
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0
+OptTime             0
+TLNodeTime          0
+TotalTime           0
+----------------Numbers stats----------------------------
+ActualIn            6
+ActualOut           6
+ActualParam         8
+ActualRet           0
+Addr                27
+AvgInDegree         0
+AvgIndInDeg         1
+AvgIndOutDeg        1
+AvgOutDegree        0
+Copy                1
+DirectCallEdge      2
+DirectEdge          74
+DirectRetEdge       0
+FormalIn            10
+FormalOut           10
+FormalParam         2
+FormalRet           1
+Gep                 24
+IndCallEdge         4
+IndRetEdge          4
+IndirectEdge        46
+IndirectEdgeLabels  46
+Load                17
+MSSAPhi             0
+MaxInDegree         3
+MaxIndInDeg         1
+MaxIndOutDeg        7
+MaxOutDegree        7
+PHI                 1
+Store               10
+TotalEdge           120
+TotalNode           124
+#######################################################
+
+*********CallGraph Stats (Flow-sensitive analysis)***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+FIObjNum            2
+FSObjNum            22
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           10
+TotalNode           7
+#######################################################
+
+*********Flow-Sensitive Pointer Analysis Statistics***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Time and memory stats--------------------
+AddrTime            0
+AverageSCCSize      0
+AvgAddrTakenVarPts  0.9
+AvgINPtsSize        0
+AvgOUTPtsSize       0
+AvgPtsSize          0.972222
+AvgTopLvlPtsSize    0.972222
+CopyTime            0
+DirectPropaTime     0
+GepTime             0
+IndirectPropaTime   0
+LoadTime            0
+MemoryUsageVmrss    1024
+MemoryUsageVmsize   396
+PhiTime             0
+ProcessTime         0
+PropagationTime     0
+SCCTime             0
+SolveTime           0
+StoreTime           0
+Strong/WeakUpdTime  0
+TotalTime           0.001
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     0
+AO_SNodesHaveOUT    0
+CopysNum            1
+DummyFieldPtrs      1
+FI_SNodesHaveIN     0
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+FieldObjs           7
+IndEdgeSolved       0
+LD_SNodesHaveIN     0
+LD_SNodesHaveOUT    0
+LocalVarInRecur     0
+MaxAddrTakenVarPts  1
+MaxINPtsSize        0
+MaxOUTPtsSize       0
+MaxPtsSize          1
+MaxSCCSize          1
+MaxTopLvlPtsSize    1
+MemObjects          24
+NullPointer         0
+NumOfAddrTakenVar   10
+NumOfNodesInSCC     0
+NumOfSCC            0
+PHI_SNodesHaveIN    0
+PHI_SNodesHaveOUT   0
+Pointers            180
+PointsToBlkPtr      0
+PointsToConstPtr    0
+PotentialVarHaveIN  0
+PotentialVarHaveOUT 0
+ProcessedAParam     0
+ProcessedAddr       27
+ProcessedCopy       1
+ProcessedFRet       0
+ProcessedGep        24
+ProcessedLoad       17
+ProcessedMSSANode   32
+ProcessedPhi        1
+ProcessedStore      10
+SNodesHaveIN        0
+SNodesHaveOUT       0
+ST_SNodesHaveIN     0
+ST_SNodesHaveOUT    0
+SolveIterations     1
+StoresNum           10
+StrongUpdates       5
+TotalObjects        31
+TotalPointers       181
+VarHaveEmptyIN      0
+VarHaveEmptyOUT     0
+VarHaveIN           0
+VarHaveIN_AI        0
+VarHaveIN_AO        0
+VarHaveIN_FI        0
+VarHaveIN_FO        0
+VarHaveIN_LD        0
+VarHaveIN_PHI       0
+VarHaveIN_ST        0
+VarHaveOUT          0
+VarHaveOUT_AI       0
+VarHaveOUT_AO       0
+VarHaveOUT_FI       0
+VarHaveOUT_FO       0
+VarHaveOUT_LD       0
+VarHaveOUT_PHI      0
+VarHaveOUT_ST       0
+#######################################################
+
+****Persistent Points-To Cache Statistics: flow-sensitive analysis bitvector****
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+UniquePointsToSets       31
+TotalUnions              109
+PropertyUnions           109
+UniqueUnions             0
+LookupUnions             0
+PreemptiveUnions         0
+TotalComplements         0
+PropertyComplements      0
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       0
+PropertyIntersections    0
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################

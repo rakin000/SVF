@@ -1,0 +1,763 @@
+
+*********General Stats***************
+################ (program : reverse_linked_list.ll)###############
+AddrsNum            45
+BBWith2Succ         6
+BBWith3Succ         0
+CallsNum            15
+ConstArrayObj       1
+ConstStructObj      0
+ConstantObj         0
+CopysNum            1
+FIObjNum            0
+FSObjNum            29
+FunctionObjs        9
+GepsNum             17
+GlobalObjs          1
+HeapObjs            1
+IndCallSites        0
+LoadsNum            46
+MaxStructSize       5
+NonPtrObj           16
+ReturnsNum          3
+StackObjs           17
+StoresNum           35
+TotalCallSite       17
+TotalFieldObjects   7
+TotalObjects        30
+TotalPTASVFStmts    138
+TotalPointers       194
+TotalSVFStmts       190
+VarArrayObj         0
+VarStructObj        2
+----------------Time and memory stats--------------------
+LLVMIRTime          0.005
+SVFIRTime           0
+SymbolTableTime     0.001
+#######################################################
+
+*********CallGraph Stats (Andersen analysis)***************
+################ (program : reverse_linked_list.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           17
+TotalNode           9
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : reverse_linked_list.ll)###############
+----------------Time and memory stats--------------------
+AvgIn/OutAddrEdge   0.251799
+AvgIn/OutCopyEdge   0.71223
+AvgIn/OutEdge       1.47482
+AvgIn/OutLoadEdge   0.302158
+AvgIn/OutStoreEdge  0.208633
+AvgPtsSetSize       0.481781
+AvgTopLvlPtsSize    0.980769
+CollapseTime        0
+CopyGepTime         0
+LoadStoreTime       0
+MemoryUsageVmrss    512
+MemoryUsageVmsize   264
+SCCDetectTime       0
+SCCMergeTime        0
+TotalTime           0.001
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AddrProcessed       35
+CopyProcessed       78
+DummyFieldPtrs      1
+FieldObjs           7
+GepProcessed        17
+IndCallSites        0
+IndEdgeSolved       0
+LoadProcessed       42
+LocalVarInRecur     0
+MaxInAddrEdge       1
+MaxInCopyEdge       3
+MaxInLoadEdge       1
+MaxInStoreEdge      2
+MaxNodesInSCC       0
+MaxOutAddrEdge      7
+MaxOutCopyEdge      7
+MaxOutLoadEdge      5
+MaxOutStoreEdge     4
+MaxPtsSetSize       1
+MemObjects          30
+NodesInCycles       0
+NullPointer         0
+NumOfAddrs          35
+NumOfCGEdge         170
+NumOfCGNode         146
+NumOfCopys          82
+NumOfFieldExpand    0
+NumOfGeps           17
+NumOfLoads          42
+NumOfSCCDetect      4
+NumOfSFRs           0
+NumOfStores         29
+NumOfValidNode      139
+NumOfValidObjNode   34
+Pointers            193
+PointsToBlkPtr      0
+PointsToConstPtr    0
+SolveIterations     4
+StoreProcessed      29
+TotalCycleNum       0
+TotalObjects        37
+TotalPWCCycleNum    0
+TotalPointers       194
+#######################################################
+
+****Persistent Points-To Cache Statistics: Andersen's analysis bitvector****
+################ (program : reverse_linked_list.ll)###############
+UniquePointsToSets       37
+TotalUnions              130
+PropertyUnions           130
+UniqueUnions             0
+LookupUnions             0
+PreemptiveUnions         0
+TotalComplements         575
+PropertyComplements      575
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       71
+PropertyIntersections    71
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################
+
+*********Memory SSA Statistics***************
+################ (program : reverse_linked_list.ll)###############
+----------------Time and memory stats--------------------
+AverageRegSize      1
+GenMUCHITime        0.001
+GenRegionTime       0
+InsertPHITime       0
+SSARenameTime       0
+TotalMSSATime       0.001
+----------------Numbers stats----------------------------
+BBHasMSSAPhi        6
+CSChiNode           22
+CSHasChi            9
+CSHasMu             11
+CSMuNode            24
+FunEntryChi         23
+FunHasEntryChi      5
+FunHasRetMu         5
+FunRetMu            23
+LoadHasMu           42
+LoadMuNode          42
+MSSAPhi             14
+MaxRegSize          1
+MemRegions          15
+StoreChiNode        24
+StoreHasChi         24
+#######################################################
+==========FUNCTION: malloc==========
+entry
+   %size.addr = alloca i64, align 8 
+   store i64 %size, ptr %size.addr, align 8 
+   ret ptr null 
+==========FUNCTION: createNode==========
+12V_1 = ENCHI(MR_12V_0) 	pts{245 }
+2V_1 = ENCHI(MR_2V_0) 	pts{35 }
+36V_1 = ENCHI(MR_36V_0) 	pts{32 }
+
+   %2 = alloca i32, align 4 
+   %3 = alloca ptr, align 8 
+   store i32 %0, ptr %2, align 4 
+
+CALMU(MR_2V_1) 	pts{35 }
+   %4 = call noalias ptr @malloc(i64 noundef 16) #4 
+2V_2 = CALCHI(MR_2V_1) 	pts{35 }
+
+   store ptr %4, ptr %3, align 8 
+36V_2 = STCHI(MR_36V_1) 	pts{32 }
+
+   %5 = load i32, ptr %2, align 4 
+
+LDMU(MR_36V_2) 	pts{32 }
+   %6 = load ptr, ptr %3, align 8 
+   %7 = getelementptr inbounds %struct.Node, ptr %6, i32 0, i32 0 
+   store i32 %5, ptr %7, align 8 
+
+LDMU(MR_36V_2) 	pts{32 }
+   %8 = load ptr, ptr %3, align 8 
+   %9 = getelementptr inbounds %struct.Node, ptr %8, i32 0, i32 1 
+   store ptr null, ptr %9, align 8 
+12V_2 = STCHI(MR_12V_1) 	pts{245 }
+
+LDMU(MR_36V_2) 	pts{32 }
+   %10 = load ptr, ptr %3, align 8 
+   ret ptr %10 
+RETMU(MR_12V_2) 	pts{245 }
+RETMU(MR_2V_2) 	pts{35 }
+RETMU(MR_36V_2) 	pts{32 }
+==========FUNCTION: appendNode==========
+12V_1 = ENCHI(MR_12V_0) 	pts{245 }
+20V_1 = ENCHI(MR_20V_0) 	pts{177 }
+32V_1 = ENCHI(MR_32V_0) 	pts{64 }
+30V_1 = ENCHI(MR_30V_0) 	pts{62 }
+28V_1 = ENCHI(MR_28V_0) 	pts{58 }
+2V_1 = ENCHI(MR_2V_0) 	pts{35 }
+
+   %3 = alloca ptr, align 8 
+   %4 = alloca i32, align 4 
+   %5 = alloca ptr, align 8 
+   %6 = alloca ptr, align 8 
+   store ptr %0, ptr %3, align 8 
+28V_2 = STCHI(MR_28V_1) 	pts{58 }
+
+   store i32 %1, ptr %4, align 4 
+   %7 = load i32, ptr %4, align 4 
+
+CALMU(MR_12V_1) 	pts{245 }
+CALMU(MR_2V_1) 	pts{35 }
+   %8 = call ptr @createNode(i32 noundef %7) 
+12V_2 = CALCHI(MR_12V_1) 	pts{245 }
+2V_2 = CALCHI(MR_2V_1) 	pts{35 }
+
+   store ptr %8, ptr %5, align 8 
+30V_2 = STCHI(MR_30V_1) 	pts{62 }
+
+LDMU(MR_28V_2) 	pts{58 }
+   %9 = load ptr, ptr %3, align 8 
+
+LDMU(MR_20V_1) 	pts{177 }
+   %10 = load ptr, ptr %9, align 8 
+   %11 = icmp eq ptr %10, null 
+   br i1 %11, label %12, label %15 
+
+
+LDMU(MR_30V_2) 	pts{62 }
+   %13 = load ptr, ptr %5, align 8 
+
+LDMU(MR_28V_2) 	pts{58 }
+   %14 = load ptr, ptr %3, align 8 
+   store ptr %13, ptr %14, align 8 
+20V_3 = STCHI(MR_20V_1) 	pts{177 }
+
+   br label %31 
+
+
+LDMU(MR_28V_2) 	pts{58 }
+   %16 = load ptr, ptr %3, align 8 
+
+LDMU(MR_20V_1) 	pts{177 }
+   %17 = load ptr, ptr %16, align 8 
+   store ptr %17, ptr %6, align 8 
+32V_2 = STCHI(MR_32V_1) 	pts{64 }
+
+   br label %18 
+
+32V_3 = PHI(MR_32V_4, MR_32V_2, )
+
+LDMU(MR_32V_3) 	pts{64 }
+   %19 = load ptr, ptr %6, align 8 
+   %20 = getelementptr inbounds %struct.Node, ptr %19, i32 0, i32 1 
+
+LDMU(MR_12V_2) 	pts{245 }
+   %21 = load ptr, ptr %20, align 8 
+   %22 = icmp ne ptr %21, null 
+   br i1 %22, label %23, label %27 
+
+
+LDMU(MR_32V_3) 	pts{64 }
+   %24 = load ptr, ptr %6, align 8 
+   %25 = getelementptr inbounds %struct.Node, ptr %24, i32 0, i32 1 
+
+LDMU(MR_12V_2) 	pts{245 }
+   %26 = load ptr, ptr %25, align 8 
+   store ptr %26, ptr %6, align 8 
+32V_4 = STCHI(MR_32V_3) 	pts{64 }
+
+   br label %18, !llvm.loop !6 
+
+
+LDMU(MR_30V_2) 	pts{62 }
+   %28 = load ptr, ptr %5, align 8 
+
+LDMU(MR_32V_3) 	pts{64 }
+   %29 = load ptr, ptr %6, align 8 
+   %30 = getelementptr inbounds %struct.Node, ptr %29, i32 0, i32 1 
+   store ptr %28, ptr %30, align 8 
+12V_3 = STCHI(MR_12V_2) 	pts{245 }
+
+   br label %31 
+
+12V_4 = PHI(MR_12V_2, MR_12V_3, )
+20V_2 = PHI(MR_20V_3, MR_20V_1, )
+32V_5 = PHI(MR_32V_1, MR_32V_3, )
+   ret void 
+RETMU(MR_12V_4) 	pts{245 }
+RETMU(MR_20V_2) 	pts{177 }
+RETMU(MR_32V_5) 	pts{64 }
+RETMU(MR_30V_2) 	pts{62 }
+RETMU(MR_28V_2) 	pts{58 }
+RETMU(MR_2V_2) 	pts{35 }
+==========FUNCTION: printList==========
+12V_1 = ENCHI(MR_12V_0) 	pts{245 }
+16V_1 = ENCHI(MR_16V_0) 	pts{107 }
+14V_1 = ENCHI(MR_14V_0) 	pts{105 }
+
+   %2 = alloca ptr, align 8 
+   %3 = alloca ptr, align 8 
+   store ptr %0, ptr %2, align 8 
+14V_2 = STCHI(MR_14V_1) 	pts{105 }
+
+LDMU(MR_14V_2) 	pts{105 }
+   %4 = load ptr, ptr %2, align 8 
+   store ptr %4, ptr %3, align 8 
+16V_2 = STCHI(MR_16V_1) 	pts{107 }
+
+   br label %5 
+
+16V_3 = PHI(MR_16V_4, MR_16V_2, )
+
+LDMU(MR_16V_3) 	pts{107 }
+   %6 = load ptr, ptr %3, align 8 
+   %7 = icmp ne ptr %6, null 
+   br i1 %7, label %8, label %16 
+
+
+LDMU(MR_16V_3) 	pts{107 }
+   %9 = load ptr, ptr %3, align 8 
+   %10 = getelementptr inbounds %struct.Node, ptr %9, i32 0, i32 0 
+   %11 = load i32, ptr %10, align 8 
+   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %11) 
+
+LDMU(MR_16V_3) 	pts{107 }
+   %13 = load ptr, ptr %3, align 8 
+   %14 = getelementptr inbounds %struct.Node, ptr %13, i32 0, i32 1 
+
+LDMU(MR_12V_1) 	pts{245 }
+   %15 = load ptr, ptr %14, align 8 
+   store ptr %15, ptr %3, align 8 
+16V_4 = STCHI(MR_16V_3) 	pts{107 }
+
+   br label %5, !llvm.loop !6 
+
+   %17 = call i32 (ptr, ...) @printf(ptr noundef @.str.1) 
+   ret void 
+RETMU(MR_12V_1) 	pts{245 }
+RETMU(MR_16V_3) 	pts{107 }
+RETMU(MR_14V_2) 	pts{105 }
+==========FUNCTION: reverseList==========
+12V_1 = ENCHI(MR_12V_0) 	pts{245 }
+10V_1 = ENCHI(MR_10V_0) 	pts{143 }
+8V_1 = ENCHI(MR_8V_0) 	pts{141 }
+6V_1 = ENCHI(MR_6V_0) 	pts{139 }
+4V_1 = ENCHI(MR_4V_0) 	pts{137 }
+2V_1 = ENCHI(MR_2V_0) 	pts{35 }
+
+   %2 = alloca ptr, align 8 
+   %3 = alloca ptr, align 8 
+   %4 = alloca ptr, align 8 
+   %5 = alloca ptr, align 8 
+   store ptr %0, ptr %2, align 8 
+4V_2 = STCHI(MR_4V_1) 	pts{137 }
+
+   store ptr null, ptr %3, align 8 
+6V_2 = STCHI(MR_6V_1) 	pts{139 }
+
+LDMU(MR_4V_2) 	pts{137 }
+   %6 = load ptr, ptr %2, align 8 
+   store ptr %6, ptr %4, align 8 
+8V_2 = STCHI(MR_8V_1) 	pts{141 }
+
+   br label %7 
+
+12V_2 = PHI(MR_12V_4, MR_12V_1, )
+10V_2 = PHI(MR_10V_3, MR_10V_1, )
+8V_3 = PHI(MR_8V_4, MR_8V_2, )
+6V_3 = PHI(MR_6V_4, MR_6V_2, )
+2V_2 = PHI(MR_2V_3, MR_2V_1, )
+
+LDMU(MR_8V_3) 	pts{141 }
+   %8 = load ptr, ptr %4, align 8 
+   %9 = icmp ne ptr %8, null 
+   br i1 %9, label %10, label %22 
+
+
+LDMU(MR_8V_3) 	pts{141 }
+   %11 = load ptr, ptr %4, align 8 
+   %12 = getelementptr inbounds %struct.Node, ptr %11, i32 0, i32 0 
+   %13 = load i32, ptr %12, align 8 
+
+CALMU(MR_12V_2) 	pts{245 }
+CALMU(MR_2V_2) 	pts{35 }
+   %14 = call ptr @createNode(i32 noundef %13) 
+12V_3 = CALCHI(MR_12V_2) 	pts{245 }
+2V_3 = CALCHI(MR_2V_2) 	pts{35 }
+
+   store ptr %14, ptr %5, align 8 
+10V_3 = STCHI(MR_10V_2) 	pts{143 }
+
+LDMU(MR_6V_3) 	pts{139 }
+   %15 = load ptr, ptr %3, align 8 
+
+LDMU(MR_10V_3) 	pts{143 }
+   %16 = load ptr, ptr %5, align 8 
+   %17 = getelementptr inbounds %struct.Node, ptr %16, i32 0, i32 1 
+   store ptr %15, ptr %17, align 8 
+12V_4 = STCHI(MR_12V_3) 	pts{245 }
+
+LDMU(MR_10V_3) 	pts{143 }
+   %18 = load ptr, ptr %5, align 8 
+   store ptr %18, ptr %3, align 8 
+6V_4 = STCHI(MR_6V_3) 	pts{139 }
+
+LDMU(MR_8V_3) 	pts{141 }
+   %19 = load ptr, ptr %4, align 8 
+   %20 = getelementptr inbounds %struct.Node, ptr %19, i32 0, i32 1 
+
+LDMU(MR_12V_4) 	pts{245 }
+   %21 = load ptr, ptr %20, align 8 
+   store ptr %21, ptr %4, align 8 
+8V_4 = STCHI(MR_8V_3) 	pts{141 }
+
+   br label %7, !llvm.loop !6 
+
+
+LDMU(MR_6V_3) 	pts{139 }
+   %23 = load ptr, ptr %3, align 8 
+   ret ptr %23 
+RETMU(MR_10V_2) 	pts{143 }
+RETMU(MR_8V_3) 	pts{141 }
+RETMU(MR_6V_3) 	pts{139 }
+RETMU(MR_12V_2) 	pts{245 }
+RETMU(MR_4V_2) 	pts{137 }
+RETMU(MR_2V_2) 	pts{35 }
+==========FUNCTION: main==========
+24V_1 = ENCHI(MR_24V_0) 	pts{181 }
+22V_1 = ENCHI(MR_22V_0) 	pts{179 }
+20V_1 = ENCHI(MR_20V_0) 	pts{177 }
+12V_1 = ENCHI(MR_12V_0) 	pts{245 }
+2V_1 = ENCHI(MR_2V_0) 	pts{35 }
+
+   %1 = alloca i32, align 4 
+   %2 = alloca ptr, align 8 
+   %3 = alloca ptr, align 8 
+   %4 = alloca ptr, align 8 
+   store i32 0, ptr %1, align 4 
+   store ptr null, ptr %2, align 8 
+20V_2 = STCHI(MR_20V_1) 	pts{177 }
+
+CALMU(MR_12V_1) 	pts{245 }
+CALMU(MR_20V_2) 	pts{177 }
+CALMU(MR_2V_1) 	pts{35 }
+   call void @appendNode(ptr noundef %2, i32 noundef 1) 
+12V_2 = CALCHI(MR_12V_1) 	pts{245 }
+20V_3 = CALCHI(MR_20V_2) 	pts{177 }
+2V_2 = CALCHI(MR_2V_1) 	pts{35 }
+
+CALMU(MR_12V_2) 	pts{245 }
+CALMU(MR_20V_3) 	pts{177 }
+CALMU(MR_2V_2) 	pts{35 }
+   call void @appendNode(ptr noundef %2, i32 noundef 2) 
+12V_3 = CALCHI(MR_12V_2) 	pts{245 }
+20V_4 = CALCHI(MR_20V_3) 	pts{177 }
+2V_3 = CALCHI(MR_2V_2) 	pts{35 }
+
+CALMU(MR_12V_3) 	pts{245 }
+CALMU(MR_20V_4) 	pts{177 }
+CALMU(MR_2V_3) 	pts{35 }
+   call void @appendNode(ptr noundef %2, i32 noundef 3) 
+12V_4 = CALCHI(MR_12V_3) 	pts{245 }
+20V_5 = CALCHI(MR_20V_4) 	pts{177 }
+2V_4 = CALCHI(MR_2V_3) 	pts{35 }
+
+CALMU(MR_12V_4) 	pts{245 }
+CALMU(MR_20V_5) 	pts{177 }
+CALMU(MR_2V_4) 	pts{35 }
+   call void @appendNode(ptr noundef %2, i32 noundef 4) 
+12V_5 = CALCHI(MR_12V_4) 	pts{245 }
+20V_6 = CALCHI(MR_20V_5) 	pts{177 }
+2V_5 = CALCHI(MR_2V_4) 	pts{35 }
+
+CALMU(MR_12V_5) 	pts{245 }
+CALMU(MR_20V_6) 	pts{177 }
+CALMU(MR_2V_5) 	pts{35 }
+   call void @appendNode(ptr noundef %2, i32 noundef 5) 
+12V_6 = CALCHI(MR_12V_5) 	pts{245 }
+20V_7 = CALCHI(MR_20V_6) 	pts{177 }
+2V_6 = CALCHI(MR_2V_5) 	pts{35 }
+
+   %5 = call i32 (ptr, ...) @printf(ptr noundef @.str.2) 
+
+LDMU(MR_20V_7) 	pts{177 }
+   %6 = load ptr, ptr %2, align 8 
+
+CALMU(MR_12V_6) 	pts{245 }
+   call void @printList(ptr noundef %6) 
+
+LDMU(MR_20V_7) 	pts{177 }
+   %7 = load ptr, ptr %2, align 8 
+
+CALMU(MR_12V_6) 	pts{245 }
+CALMU(MR_2V_6) 	pts{35 }
+   %8 = call ptr @reverseList(ptr noundef %7) 
+12V_7 = CALCHI(MR_12V_6) 	pts{245 }
+2V_7 = CALCHI(MR_2V_6) 	pts{35 }
+
+   store ptr %8, ptr %3, align 8 
+22V_2 = STCHI(MR_22V_1) 	pts{179 }
+
+   %9 = call i32 (ptr, ...) @printf(ptr noundef @.str.3) 
+
+LDMU(MR_22V_2) 	pts{179 }
+   %10 = load ptr, ptr %3, align 8 
+
+CALMU(MR_12V_7) 	pts{245 }
+   call void @printList(ptr noundef %10) 
+   br label %11 
+
+24V_2 = PHI(MR_24V_5, MR_24V_1, )
+22V_3 = PHI(MR_22V_4, MR_22V_2, )
+
+LDMU(MR_22V_3) 	pts{179 }
+   %12 = load ptr, ptr %3, align 8 
+   %13 = icmp ne ptr %12, null 
+   br i1 %13, label %14, label %20 
+
+
+LDMU(MR_22V_3) 	pts{179 }
+   %15 = load ptr, ptr %3, align 8 
+   store ptr %15, ptr %4, align 8 
+24V_5 = STCHI(MR_24V_2) 	pts{181 }
+
+LDMU(MR_22V_3) 	pts{179 }
+   %16 = load ptr, ptr %3, align 8 
+   %17 = getelementptr inbounds %struct.Node, ptr %16, i32 0, i32 1 
+
+LDMU(MR_12V_7) 	pts{245 }
+   %18 = load ptr, ptr %17, align 8 
+   store ptr %18, ptr %3, align 8 
+22V_4 = STCHI(MR_22V_3) 	pts{179 }
+
+LDMU(MR_24V_5) 	pts{181 }
+   %19 = load ptr, ptr %4, align 8 
+   call void @free(ptr noundef %19) #4 
+   br label %11, !llvm.loop !6 
+
+   br label %21 
+
+24V_3 = PHI(MR_24V_4, MR_24V_2, )
+20V_8 = PHI(MR_20V_9, MR_20V_7, )
+
+LDMU(MR_20V_8) 	pts{177 }
+   %22 = load ptr, ptr %2, align 8 
+   %23 = icmp ne ptr %22, null 
+   br i1 %23, label %24, label %30 
+
+
+LDMU(MR_20V_8) 	pts{177 }
+   %25 = load ptr, ptr %2, align 8 
+   store ptr %25, ptr %4, align 8 
+24V_4 = STCHI(MR_24V_3) 	pts{181 }
+
+LDMU(MR_20V_8) 	pts{177 }
+   %26 = load ptr, ptr %2, align 8 
+   %27 = getelementptr inbounds %struct.Node, ptr %26, i32 0, i32 1 
+
+LDMU(MR_12V_7) 	pts{245 }
+   %28 = load ptr, ptr %27, align 8 
+   store ptr %28, ptr %2, align 8 
+20V_9 = STCHI(MR_20V_8) 	pts{177 }
+
+LDMU(MR_24V_4) 	pts{181 }
+   %29 = load ptr, ptr %4, align 8 
+   call void @free(ptr noundef %29) #4 
+   br label %21, !llvm.loop !8 
+
+   ret i32 0 
+RETMU(MR_24V_3) 	pts{181 }
+RETMU(MR_22V_3) 	pts{179 }
+RETMU(MR_20V_8) 	pts{177 }
+RETMU(MR_12V_7) 	pts{245 }
+RETMU(MR_2V_7) 	pts{35 }
+==========FUNCTION: malloc==========
+==========FUNCTION: printf==========
+==========FUNCTION: free==========
+
+*********SVFG Statistics***************
+################ (program : reverse_linked_list.ll)###############
+----------------Time and memory stats--------------------
+ATNodeTime          0
+AvgWeight           1
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0
+OptTime             0
+TLNodeTime          0
+TotalTime           0
+----------------Numbers stats----------------------------
+ActualIn            24
+ActualOut           22
+ActualParam         14
+ActualRet           3
+Addr                35
+AvgInDegree         1
+AvgIndInDeg         1
+AvgIndOutDeg        1
+AvgOutDegree        1
+Copy                1
+DirectCallEdge      8
+DirectEdge          149
+DirectRetEdge       3
+FormalIn            23
+FormalOut           23
+FormalParam         3
+FormalRet           3
+Gep                 17
+IndCallEdge         23
+IndRetEdge          21
+IndirectEdge        185
+IndirectEdgeLabels  185
+Load                42
+MSSAPhi             14
+MaxInDegree         5
+MaxIndInDeg         5
+MaxIndOutDeg        5
+MaxOutDegree        12
+PHI                 3
+Store               29
+TotalEdge           334
+TotalNode           257
+#######################################################
+
+*********CallGraph Stats (Flow-sensitive analysis)***************
+################ (program : reverse_linked_list.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+FIObjNum            0
+FSObjNum            30
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           17
+TotalNode           9
+#######################################################
+
+*********Flow-Sensitive Pointer Analysis Statistics***************
+################ (program : reverse_linked_list.ll)###############
+----------------Time and memory stats--------------------
+AddrTime            0
+AverageSCCSize      7.1
+AvgAddrTakenVarPts  0.896552
+AvgINPtsSize        0
+AvgOUTPtsSize       0
+AvgPtsSize          0.980769
+AvgTopLvlPtsSize    0.980769
+CopyTime            0
+DirectPropaTime     0
+GepTime             0
+IndirectPropaTime   0
+LoadTime            0
+MemoryUsageVmrss    1408
+MemoryUsageVmsize   792
+PhiTime             0
+ProcessTime         0
+PropagationTime     0
+SCCTime             0
+SolveTime           0.001
+StoreTime           0
+Strong/WeakUpdTime  0
+TotalTime           0.006
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     0
+AO_SNodesHaveOUT    0
+CopysNum            1
+DummyFieldPtrs      1
+FI_SNodesHaveIN     0
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+FieldObjs           7
+IndEdgeSolved       0
+LD_SNodesHaveIN     0
+LD_SNodesHaveOUT    0
+LocalVarInRecur     0
+MaxAddrTakenVarPts  1
+MaxINPtsSize        0
+MaxOUTPtsSize       0
+MaxPtsSize          1
+MaxSCCSize          31
+MaxTopLvlPtsSize    1
+MemObjects          30
+NullPointer         0
+NumOfAddrTakenVar   29
+NumOfNodesInSCC     71
+NumOfSCC            10
+PHI_SNodesHaveIN    0
+PHI_SNodesHaveOUT   0
+Pointers            193
+PointsToBlkPtr      0
+PointsToConstPtr    0
+PotentialVarHaveIN  0
+PotentialVarHaveOUT 0
+ProcessedAParam     0
+ProcessedAddr       35
+ProcessedCopy       1
+ProcessedFRet       0
+ProcessedGep        24
+ProcessedLoad       59
+ProcessedMSSANode   134
+ProcessedPhi        3
+ProcessedStore      49
+SNodesHaveIN        0
+SNodesHaveOUT       0
+ST_SNodesHaveIN     0
+ST_SNodesHaveOUT    0
+SolveIterations     1
+StoresNum           29
+StrongUpdates       21
+TotalObjects        37
+TotalPointers       194
+VarHaveEmptyIN      0
+VarHaveEmptyOUT     0
+VarHaveIN           0
+VarHaveIN_AI        0
+VarHaveIN_AO        0
+VarHaveIN_FI        0
+VarHaveIN_FO        0
+VarHaveIN_LD        0
+VarHaveIN_PHI       0
+VarHaveIN_ST        0
+VarHaveOUT          0
+VarHaveOUT_AI       0
+VarHaveOUT_AO       0
+VarHaveOUT_FI       0
+VarHaveOUT_FO       0
+VarHaveOUT_LD       0
+VarHaveOUT_PHI      0
+VarHaveOUT_ST       0
+#######################################################
+
+****Persistent Points-To Cache Statistics: flow-sensitive analysis bitvector****
+################ (program : reverse_linked_list.ll)###############
+UniquePointsToSets       37
+TotalUnions              285
+PropertyUnions           285
+UniqueUnions             0
+LookupUnions             0
+PreemptiveUnions         0
+TotalComplements         0
+PropertyComplements      0
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       0
+PropertyIntersections    0
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################

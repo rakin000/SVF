@@ -1,0 +1,133 @@
+
+*********General Stats***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+AddrsNum            35
+BBWith2Succ         4
+BBWith3Succ         0
+CallsNum            3
+ConstArrayObj       1
+ConstStructObj      0
+ConstantObj         0
+CopysNum            8
+FIObjNum            2
+FSObjNum            21
+FunctionObjs        7
+GepsNum             24
+GlobalObjs          1
+HeapObjs            2
+IndCallSites        0
+LoadsNum            43
+MaxStructSize       5
+NonPtrObj           20
+ReturnsNum          0
+StackObjs           12
+StoresNum           27
+TotalCallSite       10
+TotalFieldObjects   7
+TotalObjects        24
+TotalPTASVFStmts    82
+TotalPointers       181
+TotalSVFStmts       170
+VarArrayObj         0
+VarStructObj        2
+----------------Time and memory stats--------------------
+LLVMIRTime          0.006
+SVFIRTime           0
+SymbolTableTime     0
+#######################################################
+
+*********CallGraph Stats (Andersen analysis)***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Numbers stats----------------------------
+CalRetPairInCycle   0
+MaxNodeInCycle      0
+NodeInCycle         0
+TotalCycle          0
+TotalEdge           10
+TotalNode           7
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+----------------Time and memory stats--------------------
+AvgIn/OutAddrEdge   0.267327
+AvgIn/OutCopyEdge   0.544554
+AvgIn/OutEdge       1.07921
+AvgIn/OutLoadEdge   0.168317
+AvgIn/OutStoreEdge  0.0990099
+AvgPtsSetSize       0.389381
+AvgTopLvlPtsSize    1.11111
+CollapseTime        0
+CopyGepTime         0
+LoadStoreTime       0
+MemoryUsageVmrss    512
+MemoryUsageVmsize   264
+SCCDetectTime       0
+SCCMergeTime        0
+TotalTime           0
+UpdateCGTime        0
+----------------Numbers stats----------------------------
+AddrProcessed       27
+CopyProcessed       28
+DummyFieldPtrs      1
+FieldObjs           7
+GepProcessed        24
+IndCallSites        0
+IndEdgeSolved       0
+LoadProcessed       17
+LocalVarInRecur     0
+MaxInAddrEdge       1
+MaxInCopyEdge       2
+MaxInLoadEdge       1
+MaxInStoreEdge      2
+MaxNodesInSCC       0
+MaxOutAddrEdge      5
+MaxOutCopyEdge      7
+MaxOutLoadEdge      6
+MaxOutStoreEdge     1
+MaxPtsSetSize       2
+MemObjects          24
+NodesInCycles       0
+NullPointer         0
+NumOfAddrs          27
+NumOfCGEdge         82
+NumOfCGNode         108
+NumOfCopys          31
+NumOfFieldExpand    0
+NumOfGeps           24
+NumOfLoads          17
+NumOfSCCDetect      3
+NumOfSFRs           0
+NumOfStores         10
+NumOfValidNode      101
+NumOfValidObjNode   28
+Pointers            180
+PointsToBlkPtr      0
+PointsToConstPtr    0
+SolveIterations     3
+StoreProcessed      10
+TotalCycleNum       0
+TotalObjects        31
+TotalPWCCycleNum    0
+TotalPointers       181
+#######################################################
+
+****Persistent Points-To Cache Statistics: Andersen's analysis bitvector****
+################ (program : complex_interprocedural_pointer_usage.ll)###############
+UniquePointsToSets       32
+TotalUnions              81
+PropertyUnions           78
+UniqueUnions             1
+LookupUnions             0
+PreemptiveUnions         2
+TotalComplements         317
+PropertyComplements      317
+UniqueComplements        0
+LookupComplements        0
+PreemptiveComplements    0
+TotalIntersections       27
+PropertyIntersections    27
+UniqueIntersections      0
+LookupIntersections      0
+PreemptiveIntersections  0
+#######################################################
